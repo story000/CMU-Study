@@ -2,12 +2,17 @@ public class Room {
     private double length, width;
     private String name;
     private int id;
+    private SensorCollection sensors;
+    private AlarmCollection alarms;
+    private Device device;
 
     public Room() {
         this.length = 0.0;
         this.width = 0.0;
         this.name = "";
         this.id = 0;
+        this.sensors = new SensorCollection();
+        this.alarms = new AlarmCollection();
     }
 
     public Room(double length, double width, String name, int id) {
@@ -15,6 +20,29 @@ public class Room {
         this.width = width;
         this.name = name;
         this.id = id;
+        this.sensors = new SensorCollection();
+        this.alarms = new AlarmCollection();
+    }
+
+    public void addSensor(Sensor s) {
+        sensors.add(s);
+    }
+
+    public void addAlarm(Alarm a) {
+        alarms.add(a);
+    }
+
+    public void addDevice(Device d) {
+        device = d;
+    }
+
+    // Create a display( ) method in Room the prints its toString( ), prints the
+    // Device toString( ), then calls the display( ) method in SensorCollection and AlarmCollection.
+    public void display() {
+        System.out.println(toString());
+        System.out.println(device.toString());
+        sensors.display();
+        alarms.display();
     }
 
     public double getLength() { return length; }
