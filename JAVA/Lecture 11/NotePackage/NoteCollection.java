@@ -57,7 +57,11 @@ public class NoteCollection {
         noteList.sort((n1, n2) -> n1.compareTo(n2));
     }
 
-    public void sortByNumber()  {
-        noteList.sort((n1, n2) -> NumberSorter.compare(n1, n2));
+    public void sortByNumber(ArrayList<Note> noteList, NumberSorter NS)  {
+        noteList.sort((n1, n2) -> NS.compare(n1, n2));
+    }
+
+    public void sortBySize(ArrayList<Note> noteList, SizeSorter SS) {
+        noteList.sort((n1, n2) -> SS.compare(n1, n2));
     }
 }

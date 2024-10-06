@@ -1,7 +1,9 @@
 import NotePackage.Memo;
 import NotePackage.Note;
 import NotePackage.NoteCollection;
+import NotePackage.NumberSorter;
 import NotePackage.PoliteTimedMemo;
+import NotePackage.SizeSorter;
 import NotePackage.TimedMemo;
 import java.util.Scanner;
 // Driver for Lab9
@@ -20,7 +22,7 @@ public class MakeANote {
 
     // String values for the display sub-menu - title first
     private static final String[] displayMenu = {"Display Options", "Display all Notes",
-            "Display Note by Number", "Display Notes by Name", "Sort by Name", "Return to previous menu"};
+            "Display Note by Number", "Display Notes by Name", "Sort by Name", "Sort by Number", "Sort by Size", "Return to previous menu"};
 
     // getMenuChoice(String[] menu)
     //      Displays menu[]
@@ -181,13 +183,22 @@ public class MakeANote {
                             case 4:
                                 noteCollection.sortByName();
                                 break;
+                            
+                            // Sort by number
+                            case 5:
+                                noteCollection.sortByNumber(noteCollection.getAllNotes(), new NumberSorter());
+                                break;
+
+                            case 6:
+                                noteCollection.sortBySize(noteCollection.getAllNotes(), new SizeSorter());
+                                break;
 
                             // Quit
-                            case 5:
+                            case 7:
                                 System.out.println("Returning to main menu");
                                 break;
                         }
-                    } while (subchoice != 5);
+                    } while (subchoice != 7);
             }
 
         } while (choice != 3);

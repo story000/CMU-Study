@@ -1,20 +1,10 @@
 package NotePackage;
 
-public abstract class NumberSorter implements Comparable<Note> {
-    private int number;
+import java.util.Comparator;
 
-    public NumberSorter(int number) {
-        this.number = number;
+public class NumberSorter implements Comparator<Note> {
+    @Override
+    public int compare(Note note1, Note note2) {
+        return Integer.compare(note1.getNoteNumber(), note2.getNoteNumber());
     }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public static int compare(Note n1, Note n2) {
-        return Integer.compare(n1.getNoteNumber(), n2.getNoteNumber());
-    }
-
-
-    
 }
